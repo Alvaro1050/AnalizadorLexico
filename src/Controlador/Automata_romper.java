@@ -15,7 +15,6 @@ import Modelo.Lexema;
 public class Automata_romper {
 
     int posInicial;
-
     int cont;
     boolean aceptada;/*para guardar los caratcteres y los va ir separando*/
 
@@ -146,7 +145,7 @@ public class Automata_romper {
                 aceptada = false;
                 cont--;
 
-             } else if (car[cont] == ' ') {
+            } else if (car[cont] == ' ') {
                 validarEspacios();
                 aceptada = true;
             }

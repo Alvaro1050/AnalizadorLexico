@@ -46,7 +46,6 @@ public class Automata_diples {
 
             } else if (car[cont] == ' ') {
                 validarEspacios();
-                aceptada = true;
             }
         }
     }

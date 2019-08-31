@@ -64,7 +64,6 @@ public class Automata_OperadoresAsignacion {
                 qF();
              } else if (car[cont] == ' ') {
                 validarEspacios();
-                aceptada = true;
             }
         }
     }

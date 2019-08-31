@@ -206,7 +206,6 @@ public class Automata_dividirNR {
 
               } else if (car[cont] == ' ') {
                 validarEspacios();
-                aceptada = true;
             }
         }
     }

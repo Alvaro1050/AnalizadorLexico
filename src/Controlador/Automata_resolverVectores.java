@@ -335,7 +335,6 @@ public class Automata_resolverVectores {
 
              } else if (car[cont] == ' ') {
                 validarEspacios();
-                aceptada = true;
             }
         }
     }

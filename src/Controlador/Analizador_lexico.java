@@ -66,6 +66,7 @@ public class Analizador_lexico {
             automataOperadoresLogicos();
             automataComilla();
             identificadores();
+            errores();
         } while (flujo.getPosActual() < flujo.getCaracteres().length);
     }
 
@@ -75,11 +76,55 @@ public class Analizador_lexico {
             for (int i = flujo.getPosActual(); i < flujo.getCaracteres().length; i++) {
                 if (Character.isLetter(flujo.getCaracteres()[i]) || Character.isDigit(flujo.getCaracteres()[i])) {
                     identificador = identificador + flujo.getCaracteres()[i];
+                    if (i == flujo.getCaracteres().length - 1) {
+                        i = validarEspacios(i);
+                        flujo.setPosActual(i + 1);
+                        Lexema lex = new Lexema(identificador, "Identificador");
+                        listaLexema.add(lex);
+                        break;
+                    }
                 } else {
                     i = validarEspacios(i);
                     flujo.setPosActual(i);
-                    Lexema lex = new Lexema(identificador, "Identificador");
-                    listaLexema.add(lex);
+                    if (identificador == "") {
+
+                    } else {
+                        Lexema lex = new Lexema(identificador, "Identificador");
+                        listaLexema.add(lex);
+                    }
+                    break;
+
+                }
+            }
+        }
+    }
+
+    public void errores() {
+        String error = "";
+        if (flujo.getPosActual() == posInicial) {
+            for (int i = flujo.getPosActual(); i < flujo.getCaracteres().length; i++) {
+                if (flujo.getCaracteres()[i] == '_' || flujo.getCaracteres()[i] == '-'
+                        || flujo.getCaracteres()[i] == '?' || flujo.getCaracteres()[i] == '$'
+                        || flujo.getCaracteres()[i] == '¡' || flujo.getCaracteres()[i] == '¿'
+                        || flujo.getCaracteres()[i] == ':' || flujo.getCaracteres()[i] == '°'
+                        || flujo.getCaracteres()[i] == '^') {
+                    error = error + flujo.getCaracteres()[i];
+                    if (i == flujo.getCaracteres().length - 1) {
+                        i = validarEspacios(i);
+                        flujo.setPosActual(i + 1);
+                        Lexema lex = new Lexema(error, "Error");
+                        listaLexema.add(lex);
+                        break;
+                    }
+                } else {
+                    i = validarEspacios(i);
+                    flujo.setPosActual(i);
+                    if (error == "") {
+
+                    } else {
+                        Lexema lex = new Lexema(error, "Error");
+                        listaLexema.add(lex);
+                    }
                     break;
                 }
             }

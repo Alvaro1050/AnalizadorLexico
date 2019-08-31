@@ -262,7 +262,6 @@ public class Automata_hallarLimite {
 
           } else if (car[cont] == ' ') {
                 validarEspacios();
-                aceptada = true;
             }
         }
     }

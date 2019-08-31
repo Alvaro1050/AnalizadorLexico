@@ -203,7 +203,6 @@ public class Automata_continuar {
 
               } else if (car[cont] == ' ') {
                 validarEspacios();
-                aceptada = true;
             }
         }
     }

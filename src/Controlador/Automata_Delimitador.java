@@ -45,7 +45,6 @@ public class Automata_Delimitador {
 
               } else if (car[cont] == ' ') {
                 validarEspacios();
-                aceptada = true;
             }
         }
     }

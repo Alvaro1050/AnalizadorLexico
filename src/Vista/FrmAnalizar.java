@@ -38,7 +38,7 @@ public class FrmAnalizar extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txaIngrese = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -49,9 +49,9 @@ public class FrmAnalizar extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        txaIngrese.setColumns(20);
+        txaIngrese.setRows(5);
+        jScrollPane1.setViewportView(txaIngrese);
 
         jLabel1.setText("Ingrese el programa");
 
@@ -166,6 +166,11 @@ public class FrmAnalizar extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         char[] caracteres;
+        if (txaIngrese.getText().equals("")) {
+            
+        } else {
+            cadena = txaIngrese.getText();
+        }
         caracteres = cadena.toCharArray();
         Flujo_caracteres fc = new Flujo_caracteres(0, caracteres);
 
@@ -225,8 +230,8 @@ public class FrmAnalizar extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTable jtbLexemas;
+    private javax.swing.JTextArea txaIngrese;
     // End of variables declaration//GEN-END:variables
       public void listar() {
 

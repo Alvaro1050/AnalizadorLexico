@@ -146,7 +146,6 @@ public class Automata_cadena {
 
               } else if (car[cont] == ' ') {
                 validarEspacios();
-                aceptada = true;
             }
         }
     }

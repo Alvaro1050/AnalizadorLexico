@@ -63,9 +63,8 @@ public class Automata_OperadoresRelaciones {
                 qF();
 
             } else if (car[cont] == ' ' && aceptada == true) {
-            
+
                 validarEspacios();
-                aceptada = true;
             }
         }
     }

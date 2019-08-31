@@ -206,7 +206,6 @@ public class Automata_contrario {
 
               } else if (car[cont] == ' ') {
                 validarEspacios();
-                aceptada = true;
             }
         }
     }

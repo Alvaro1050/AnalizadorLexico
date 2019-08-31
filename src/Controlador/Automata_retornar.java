@@ -186,7 +186,6 @@ public class Automata_retornar {
 
             } else if (car[cont] == ' ') {
                 validarEspacios();
-                aceptada = true;
             }
         }
     }

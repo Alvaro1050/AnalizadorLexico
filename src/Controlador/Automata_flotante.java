@@ -184,7 +184,6 @@ public class Automata_flotante {
 
              } else if (car[cont] == ' ') {
                 validarEspacios();
-                aceptada = true;
             }
         }
     }

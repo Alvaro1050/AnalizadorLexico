@@ -45,7 +45,6 @@ public class Automata_OperadoresAritmeticos {
 
             } else if (car[cont] == ' ') {
                 validarEspacios();
-                aceptada = true;
             }
         }
     }

@@ -282,7 +282,6 @@ public class Automata_multiplicarNR {
 
               } else if (car[cont] == ' ') {
                 validarEspacios();
-                aceptada = true;
             }
         }
     }

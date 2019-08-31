@@ -147,7 +147,6 @@ public class Automata_entero {
 
               } else if (car[cont] == ' ') {
                 validarEspacios();
-                aceptada = true;
             }
         }
     }

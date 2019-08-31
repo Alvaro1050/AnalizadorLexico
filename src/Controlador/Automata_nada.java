@@ -110,7 +110,6 @@ public class Automata_nada {
 
             } else if (car[cont] == ' ') {
                 validarEspacios();
-                aceptada = true;
             }
         }
     }

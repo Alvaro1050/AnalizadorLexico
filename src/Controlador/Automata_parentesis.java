@@ -49,7 +49,6 @@ public class Automata_parentesis {
 
                } else if (car[cont] == ' ') {
                 validarEspacios();
-                aceptada = true;
             }
         }
     }

@@ -48,7 +48,6 @@ public class Automata_corchete {
 
                } else if (car[cont] == ' ') {
                 validarEspacios();
-                aceptada = true;
             }
         }
     }

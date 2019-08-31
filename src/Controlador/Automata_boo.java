@@ -89,7 +89,6 @@ public class Automata_boo {
    
             } else if (car[cont] == ' ') {
                 validarEspacios();
-                aceptada = true;
             }
         }
     }

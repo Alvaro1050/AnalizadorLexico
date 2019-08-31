@@ -47,7 +47,6 @@ public class Automata_llave {
                 q0F();
              } else if (car[cont] == ' ') {
                 validarEspacios();
-                aceptada = true;
             }
         }
     }

@@ -65,7 +65,6 @@ public class Automata_mas_mas {
 
             } else if (car[cont] == ' ') {
                 validarEspacios();
-                aceptada = true;
             }
         }
     }

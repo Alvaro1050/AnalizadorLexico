@@ -148,7 +148,6 @@ public class Automata_romper {
 
              } else if (car[cont] == ' ') {
                 validarEspacios();
-                aceptada = true;
             }
         }
     }

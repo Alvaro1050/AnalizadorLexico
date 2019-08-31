@@ -316,7 +316,6 @@ public class Automata_integrarFuncion {
 
              } else if (car[cont] == ' ') {
                 validarEspacios();
-                aceptada = true;
             }
         }
     }

@@ -161,7 +161,6 @@ public class Automata_Funcion {
 
               } else if (car[cont] == ' ') {
                 cont++;
-                aceptada = true;
             }
         }
     }

@@ -68,7 +68,6 @@ public class Automata_menos_menos {
 
               } else if (car[cont] == ' ') {
                 validarEspacios();
-                aceptada = true;
             }
         }
     }

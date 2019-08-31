@@ -166,7 +166,6 @@ public class Automata_defecto {
 
               } else if (car[cont] == ' ') {
                 validarEspacios();
-                aceptada = true;
             }
         }
     }

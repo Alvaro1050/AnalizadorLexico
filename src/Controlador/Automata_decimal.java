@@ -168,7 +168,6 @@ public class Automata_decimal {
 
             } else if (car[cont] == ' ') {
                 validarEspacios();
-                aceptada = true;
             }
         }
     }

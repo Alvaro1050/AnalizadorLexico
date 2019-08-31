@@ -264,7 +264,6 @@ public class Automata_CapturarDato {
 
               } else if (car[cont] == ' ') {
                 validarEspacios();
-                aceptada = true;
             }
         }
     }

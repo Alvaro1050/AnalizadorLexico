@@ -29,7 +29,7 @@ public class Automata_boo {
         if (aceptada) {
             Analizador_lexico.flujo.setPosActual(cont);
 
-            return new Lexema("boo", "Palabra reservada");
+            return new Lexema("boo", "Palabra reservada");//retorno de token y tipo lexema
         } else {
             return null;
         }

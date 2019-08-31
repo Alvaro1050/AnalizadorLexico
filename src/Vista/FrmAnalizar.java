@@ -165,9 +165,10 @@ public class FrmAnalizar extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        Analizador_lexico.listaLexema.removeAll(Analizador_lexico.listaLexema);
         char[] caracteres;
         if (txaIngrese.getText().equals("")) {
-            
+
         } else {
             cadena = txaIngrese.getText();
         }

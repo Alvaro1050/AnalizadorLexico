@@ -1,0 +1,7 @@
+1. clasificar mejor las palabras
+2. agregar comentarios
+3. agregar el loop infinito
+4. separar los test.
+5. arreglar la cadena
+6. revisar commillacorrecta
+7. subir los automatas a la wiki.

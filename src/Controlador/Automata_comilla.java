@@ -57,6 +57,7 @@ public class Automata_comilla {
 
             if (car[cont] == '\'') {/*el arreglo car en el contador 0 lo vamos a comparar si es = a*/
 
+                cont++;
                 aceptada = true;
                 validarEspacios();
 

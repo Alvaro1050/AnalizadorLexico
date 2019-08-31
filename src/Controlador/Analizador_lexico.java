@@ -73,7 +73,7 @@ public class Analizador_lexico {
         String identificador = "";
         if (flujo.getPosActual() == posInicial) {
             for (int i = flujo.getPosActual(); i < flujo.getCaracteres().length; i++) {
-                if (Character.isLetter(flujo.getCaracteres()[i])) {
+                if (Character.isLetter(flujo.getCaracteres()[i]) || Character.isDigit(flujo.getCaracteres()[i])) {
                     identificador = identificador + flujo.getCaracteres()[i];
                 } else {
                     i = validarEspacios(i);

@@ -43,6 +43,7 @@ public class Analizador_lexico {
             automataResolverVectores();
             automataRetornar();
             automataDefecto();
+            automataInto();
             automataNada();
             automataRomper();
             automataCase();
@@ -96,6 +97,14 @@ public class Analizador_lexico {
 
     public void automataComilla() {
         Automata_comilla atf = new Automata_comilla();
+        lexe = atf.inicio(flujo);
+        if (lexe != null) {
+            listaLexema.add(lexe);
+        }
+    }
+
+    public void automataInto() {
+        Automata_Into atf = new Automata_Into();
         lexe = atf.inicio(flujo);
         if (lexe != null) {
             listaLexema.add(lexe);

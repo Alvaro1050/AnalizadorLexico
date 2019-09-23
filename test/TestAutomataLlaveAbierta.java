@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-import Controlador.Automata_llave;
+import Controlador.Automata_llave_cerrado;
 import Modelo.Flujo_caracteres;
 import Modelo.Lexema;
 import org.junit.Test;
@@ -18,7 +18,7 @@ public class TestAutomataLlaveAbierta {
     
     @Test
     public void TestAutomataLlaveAbiertaCorrecto() {
-       Automata_llave fun = new Automata_llave();
+       Automata_llave_cerrado fun = new Automata_llave_cerrado();
         char[] caracteres = "[".toCharArray();
         Lexema resultado = fun.inicio(new Flujo_caracteres(0, caracteres));
         int esperado = 1;
@@ -35,7 +35,7 @@ public class TestAutomataLlaveAbierta {
 
     @Test
     public void TestAutomataLlaveAbiertaInCorrecto() {
-       Automata_llave fun = new Automata_llave();
+       Automata_llave_cerrado fun = new Automata_llave_cerrado();
         char[] caracteres = "ghg".toCharArray();
         Lexema resultado = fun.inicio(new Flujo_caracteres(0, caracteres));
         int esperado = 0;

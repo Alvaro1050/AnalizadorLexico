@@ -12,7 +12,7 @@ import Modelo.Lexema;
  *
  * @author alvar
  */
-public class Automata_parentesis {
+public class Automata_corchete_cerrado {
 
     int posInicial;
 
@@ -30,7 +30,8 @@ public class Automata_parentesis {
         q0F();
         if (aceptada) {
             Analizador_lexico.flujo.setPosActual(cont);
-            return new Lexema(car[posInicial] + "", "separador");
+            return new Lexema(car[posInicial] + "", "corchete abierto");
+
         } else {
             return null;
         }
@@ -40,14 +41,12 @@ public class Automata_parentesis {
 
         if (cont < car.length) {/*cuantos espacios tiene mi arreglo*/
 
-            if ((car[cont] == '(' || car[cont] == ')') && aceptada == false) {/*el arreglo car en el contador 0 lo vamos a comparar si es = a*/
+            if ((car[cont] == '}') && aceptada == false) {/*el arreglo car en el contador 0 lo vamos a comparar si es = a*/
 
-                cont++;/*incrememnto mi contador*/
-
+                cont++;
                 aceptada = true;
                 q0F();
-
-               } else if (car[cont] == ' ') {
+            } else if (car[cont] == ' ') {
                 validarEspacios();
             }
         }

@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-import Controlador.Automata_parentesis;
+import Controlador.Automata_parentesis_cerrado;
 import Modelo.Flujo_caracteres;
 import Modelo.Lexema;
 import org.junit.Test;
@@ -18,7 +18,7 @@ public class TestAutomataParentesisCerrado {
     
      @Test
     public void TestAutomataParentesisCerradoCorrecto() {
-         Automata_parentesis fun = new Automata_parentesis();
+         Automata_parentesis_cerrado fun = new Automata_parentesis_cerrado();
         char[] caracteres = ")".toCharArray();
         Lexema resultado = fun.inicio(new Flujo_caracteres(0, caracteres));
         int esperado = 1;
@@ -35,7 +35,7 @@ public class TestAutomataParentesisCerrado {
 
     @Test
     public void TestAutomataParentesisCerradoInCorrecto() {
-       Automata_parentesis fun = new Automata_parentesis();
+       Automata_parentesis_cerrado fun = new Automata_parentesis_cerrado();
         char[] caracteres = "dhsbcdh".toCharArray();
         Lexema resultado = fun.inicio(new Flujo_caracteres(0, caracteres));
         int esperado = 0;

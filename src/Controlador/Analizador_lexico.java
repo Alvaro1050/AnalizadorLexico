@@ -17,6 +17,7 @@ import java.util.List;
 public class Analizador_lexico {
 
     public static List<Lexema> listaLexema = new ArrayList<>();
+    public static List<Lexema> listaErrores = new ArrayList<>();
     Lexema lexe;
     public static Flujo_caracteres flujo = new Flujo_caracteres(0, null);
     int posInicial = 0;
@@ -56,15 +57,19 @@ public class Analizador_lexico {
             automataOperadoresAsignacion();
             automataOperadoresRelacionales();
             automataOperadoresAritmeticos();
-            automataCorchete();
-            automataLlave();
-            automataParentesis();
+            automataCorcheteAbierto();
+            automataCorcheteCerrado();
+            automataLlaveAbierta();
+            automataLlaveCerrado();
+            automataParentesisAbierto();
+            automataParentesisCerrado();
             automataDelimitador();
             automataIgual();
             automataDiples();
             automataOperadoresRelacionales();
             automataOperadoresLogicos();
             automataComilla();
+            automataComentario();
             identificadores();
             errores();
         } while (flujo.getPosActual() < flujo.getCaracteres().length);
@@ -107,13 +112,15 @@ public class Analizador_lexico {
                         || flujo.getCaracteres()[i] == '?' || flujo.getCaracteres()[i] == '$'
                         || flujo.getCaracteres()[i] == '¡' || flujo.getCaracteres()[i] == '¿'
                         || flujo.getCaracteres()[i] == ':' || flujo.getCaracteres()[i] == '°'
-                        || flujo.getCaracteres()[i] == '^') {
+                        || flujo.getCaracteres()[i] == '^'
+                        || flujo.getCaracteres()[i] == '"' || flujo.getCaracteres()[i] == '~'
+                        || flujo.getCaracteres()[i] == '¬' || flujo.getCaracteres()[i] == '¨') {
                     error = error + flujo.getCaracteres()[i];
                     if (i == flujo.getCaracteres().length - 1) {
                         i = validarEspacios(i);
                         flujo.setPosActual(i + 1);
                         Lexema lex = new Lexema(error, "Error");
-                        listaLexema.add(lex);
+                        listaErrores.add(lex);
                         break;
                     }
                 } else {
@@ -123,7 +130,7 @@ public class Analizador_lexico {
 
                     } else {
                         Lexema lex = new Lexema(error, "Error");
-                        listaLexema.add(lex);
+                        listaErrores.add(lex);
                     }
                     break;
                 }
@@ -137,6 +144,14 @@ public class Analizador_lexico {
             validarEspacios(pos);
         }
         return pos;
+    }
+
+    public void automataComentario() {
+        Automata_comentario atf = new Automata_comentario();
+        lexe = atf.inicio(flujo);
+        if (lexe != null) {
+            listaLexema.add(lexe);
+        }
     }
 
     public void automataComilla() {
@@ -179,24 +194,48 @@ public class Analizador_lexico {
         }
     }
 
-    public void automataParentesis() {
-        Automata_parentesis atf = new Automata_parentesis();
+    public void automataParentesisAbierto() {
+        Automata_parentesis_abierto atf = new Automata_parentesis_abierto();
         lexe = atf.inicio(flujo);
         if (lexe != null) {
             listaLexema.add(lexe);
         }
     }
 
-    public void automataLlave() {
-        Automata_llave atf = new Automata_llave();
+    public void automataParentesisCerrado() {
+        Automata_parentesis_cerrado atf = new Automata_parentesis_cerrado();
         lexe = atf.inicio(flujo);
         if (lexe != null) {
             listaLexema.add(lexe);
         }
     }
 
-    public void automataCorchete() {
-        Automata_corchete atf = new Automata_corchete();
+    public void automataLlaveAbierta() {
+        Automata_llave_abierta atf = new Automata_llave_abierta();
+        lexe = atf.inicio(flujo);
+        if (lexe != null) {
+            listaLexema.add(lexe);
+        }
+    }
+
+    public void automataLlaveCerrado() {
+        Automata_llave_cerrado atf = new Automata_llave_cerrado();
+        lexe = atf.inicio(flujo);
+        if (lexe != null) {
+            listaLexema.add(lexe);
+        }
+    }
+
+    public void automataCorcheteAbierto() {
+        Automata_corchete_abierto atf = new Automata_corchete_abierto();
+        lexe = atf.inicio(flujo);
+        if (lexe != null) {
+            listaLexema.add(lexe);
+        }
+    }
+
+    public void automataCorcheteCerrado() {
+        Automata_corchete_cerrado atf = new Automata_corchete_cerrado();
         lexe = atf.inicio(flujo);
         if (lexe != null) {
             listaLexema.add(lexe);

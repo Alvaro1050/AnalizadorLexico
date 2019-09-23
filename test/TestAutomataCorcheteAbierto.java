@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-import Controlador.Automata_corchete;
+import Controlador.Automata_corchete_cerrado;
 import Modelo.Flujo_caracteres;
 import Modelo.Lexema;
 import org.junit.Test;
@@ -18,7 +18,7 @@ public class TestAutomataCorcheteAbierto {
     
    @Test
     public void TestAutomataCorcheteAbiertoCorrecto() {
-       Automata_corchete fun = new Automata_corchete();
+       Automata_corchete_cerrado fun = new Automata_corchete_cerrado();
         char[] caracteres = "{".toCharArray();
         Lexema resultado = fun.inicio(new Flujo_caracteres(0, caracteres));
         int esperado = 1;
@@ -35,7 +35,7 @@ public class TestAutomataCorcheteAbierto {
 
     @Test
     public void TestAutomataCorcheteAbiertoInCorrecto() {
-       Automata_corchete fun = new Automata_corchete();
+       Automata_corchete_cerrado fun = new Automata_corchete_cerrado();
         char[] caracteres = "ff".toCharArray();
         Lexema resultado = fun.inicio(new Flujo_caracteres(0, caracteres));
         int esperado = 0;

@@ -6,6 +6,7 @@
 package Vista;
 
 import Controlador.Analizador_lexico;
+import static Controlador.Analizador_lexico.listaErrores;
 import Modelo.Flujo_caracteres;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -45,6 +46,9 @@ public class FrmAnalizar extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jtbLexemas = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jtbErrores = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -80,6 +84,18 @@ public class FrmAnalizar extends javax.swing.JFrame {
 
         jLabel4.setText("Tabla lexemas");
 
+        jtbErrores.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Token", "Tipo"
+            }
+        ));
+        jScrollPane3.setViewportView(jtbErrores);
+
+        jLabel2.setText("Errores");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -102,12 +118,13 @@ public class FrmAnalizar extends javax.swing.JFrame {
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addContainerGap(223, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -115,17 +132,20 @@ public class FrmAnalizar extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jLabel4))
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel2))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton2))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jScrollPane1)
+                            .addGap(18, 18, 18)
+                            .addComponent(jButton1)
+                            .addGap(18, 18, 18)
+                            .addComponent(jButton2))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         pack();
@@ -143,8 +163,8 @@ public class FrmAnalizar extends javax.swing.JFrame {
             entrada = new Scanner(f);
             while (entrada.hasNext()) {
                 cadena = cadena + entrada.nextLine();
-                           jTextArea1.setText(cadena);
-                           jTextArea1.setLineWrap(true); 
+                           txaIngrese.setText(cadena);
+                           txaIngrese.setLineWrap(true); 
 
             }
             System.out.println(cadena);
@@ -179,6 +199,7 @@ public class FrmAnalizar extends javax.swing.JFrame {
         analexi.analizar(fc);
 
         listar();
+        listarErrores();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -226,13 +247,16 @@ public class FrmAnalizar extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTable jtbErrores;
     private javax.swing.JTable jtbLexemas;
     private javax.swing.JTextArea txaIngrese;
     // End of variables declaration//GEN-END:variables
-      public void listar() {
+     public void listar() {
 
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Token");
@@ -245,6 +269,20 @@ public class FrmAnalizar extends javax.swing.JFrame {
         }
 
         jtbLexemas.setModel(modelo);
+    }
+     public void listarErrores() {
+
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.addColumn("Token");
+        modelo.addColumn("Tipo Lexema");
+        for (int i = 0; i < Analizador_lexico.listaErrores.size(); i++) {
+            modelo.addRow(new Object[]{
+                Analizador_lexico.listaErrores.get(i).getToken(),
+                Analizador_lexico.listaErrores.get(i).getTipoLexema()
+            });
+        }
+
+        jtbErrores.setModel(modelo);
     }
 
 }
